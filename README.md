@@ -25,6 +25,8 @@ The interface uses a three-colour palette: deep navy for structure and trust, a 
    
 Figure 1. Home screen (left) and sign-in screen (right), showing the navy/gold/green palette and card-based layout.
 
+<img width="397" height="814" alt="Protea Travel sign in" src="https://github.com/user-attachments/assets/acf5bef7-6fc6-471e-aaf5-58b140256168" />
+
 
 2.2 Information architecture and navigation
 New users move through a fixed, linear path — splash, welcome, register or sign in — that cannot be skipped, since every other screen depends on being authenticated. Once signed in, the app switches to a three-tab bottom navigation bar (Home, Trips, Settings), which was chosen over a side drawer because the app only has three top-level destinations and a bottom bar keeps them reachable with one thumb on a large phone. Search and Results sit above the tabs, as a temporary flow launched from Home, rather than being a fourth permanent tab, because they represent a task in progress rather than a place the user returns to.
@@ -43,7 +45,6 @@ class AppVM : ViewModel() {
        run { results = Repo.searchFlights(s.from, s.to); onDone() }
    }
 }
-Figure 2. Excerpt from AppVM.kt, showing UI state and validation kept out of the Composable screens.
 
 2.4 Data model and security
 Passwords are never handled by the app's own code. Registration and login call Firebase Authentication, which performs the hashing and storage; the client only ever holds a short-lived session token. Firestore, the online database, is organised as a flights collection (readable by any signed-in user) and a per-user document at users/{uid} with bookings and alerts stored as sub-collections beneath it. Firestore security rules enforce request.auth.uid == uid on every read and write to a user's own data, so one account can never read or modify another account's bookings, even if it guessed the document path.
@@ -87,7 +88,6 @@ jobs:
      - run: echo '${{ secrets.GOOGLE_SERVICES_JSON }}' > app/google-services.json
      - run: ./gradlew lintDebug
      - run: ./gradlew assembleDebug
-Figure 3. Core steps from .github/workflows/android-ci.yml (see the file itself for the complete, working version).
 
 This gives the project two concrete benefits beyond what runs locally on one machine. First, it is an automatic, independent check that the app still compiles after every change — the same UnknownHostException-style dependency failures and Gradle misconfigurations discussed in this report's next section are caught on a clean machine, not only on the developer's own laptop. Second, it keeps the Firebase credentials file out of the repository entirely: the real google-services.json only ever exists on the developer's machine and inside the encrypted GitHub Actions secret, never in git history, which is the correct way to keep a backend key both usable in CI and safe from being pushed to a public repository by mistake.
 
@@ -110,17 +110,14 @@ Build errors encountered in Android Studio were pasted directly into the chat, a
 4.3 Documentation, planning and image generation
 Claude was used to draft the project README, the demo-video shot list and script (produced as a slide deck), and this report, based on the finished code and the assessment's stated rubric; all three were reviewed and edited afterwards. It was also used to generate a self-contained HTML/CSS mock-up of the full app flow (splash through settings) as a planning aid early in the project. That HTML mock-up was AI-generated; the final mock-up images embedded in this report and in the README are, by contrast, the original reference screenshots supplied at the start of the project, not AI-generated images — this distinction is stated here for clarity and academic honesty.
 
-4.4 Citation
-In line with common academic guidance for citing AI tools (check your own module or institution's required format, as this varies), AI assistance on this project can be cited as:
-
-Anthropic. (2026). Claude (Sonnet) [Large language model].
-https://claude.ai
- 
-Used for: code scaffolding (Kotlin/Jetpack Compose/Firebase),
-debugging Gradle and Firebase configuration errors, and
-drafting project documentation. All output reviewed, tested
-and edited by the author before submission.
-A record of the prompts and responses used is available as chat history and can be exported or included as an appendix if the module requires it.
 
 5. Conclusion
 Protea Travels demonstrates a complete mobile application built against a genuinely online backend: Firebase Authentication for secure registration and login, and Cloud Firestore for a live, per-user database covering settings, bookings and price alerts. Its visual and information-architecture decisions were made specifically for a South African, curated-travel context rather than left as framework defaults, its codebase is structured for version control and automated building through GitHub and GitHub Actions, and AI assistance used during its development is disclosed and cited above.
+
+<img width="410" height="806" alt="Protea Travels dashboard" src="https://github.com/user-attachments/assets/ee65e3de-4314-4471-93d6-46f8c8f25016" />
+<img width="411" height="822" alt="Protea Travels Splash screen 2" src="https://github.com/user-attachments/assets/1141256b-4311-4658-875c-2c86e312b832" />
+<img width="399" height="803" alt="Protea travel home screen 2" src="https://github.com/user-attachments/assets/9cb859b3-3db1-4f9d-8409-8f9bd2e0bf5e" />
+<img width="397" height="814" alt="Protea Travel sign in" src="https://github.com/user-attachments/assets/fa02acdb-4860-4e3b-a265-0b699d6e4cf2" />
+<img width="401" height="810" alt="Protea Travel Registration" src="https://github.com/user-attachments/assets/adb58686-96e5-449e-929b-817b1fa014a2" />
+<img width="410" height="806" alt="Protea Travels dashboard" src="https://github.com/user-attachments/assets/61c3110e-950e-4cfc-b5ce-7779aa4c5182" />
+
