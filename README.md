@@ -1,3 +1,5 @@
+Video Link via teams because YouTube might remove the uploaded video : https://advtechonline-my.sharepoint.com/:v:/g/personal/st10441085_rcconnect_edu_za/IQA6Y3z2Uv5XTKl3IvIOWkBNAUkFviXYZ76OO0s651kSnrY 
+
 PROTEA TRAVELS
 Project Report
 Purpose, Design Considerations, Version Control & CI/CD, and Use of AI Tools
@@ -113,6 +115,8 @@ Claude was used to draft the project README, the demo-video shot list and script
 
 5. Conclusion
 Protea Travels demonstrates a complete mobile application built against a genuinely online backend: Firebase Authentication for secure registration and login, and Cloud Firestore for a live, per-user database covering settings, bookings and price alerts. Its visual and information-architecture decisions were made specifically for a South African, curated-travel context rather than left as framework defaults, its codebase is structured for version control and automated building through GitHub and GitHub Actions, and AI assistance used during its development is disclosed and cited above.
+
+
 
 <img width="410" height="806" alt="Protea Travels dashboard" src="https://github.com/user-attachments/assets/ee65e3de-4314-4471-93d6-46f8c8f25016" />
 <img width="411" height="822" alt="Protea Travels Splash screen 2" src="https://github.com/user-attachments/assets/1141256b-4311-4658-875c-2c86e312b832" />
