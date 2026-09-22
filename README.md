@@ -111,6 +111,13 @@ Build errors encountered in Android Studio were pasted directly into the chat, a
 ● A build failure at the :app:processDebugGoogleServices task (“No matching client found for package name 'com.protea.travels'”) was diagnosed as a mismatch between the applicationId in build.gradle.kts and the package name registered against the downloaded google-services.json, leading to the app being re-registered in the Firebase console under the correct package name.
 4.3 Documentation, planning and image generation
 Claude was used to draft the project README, the demo-video shot list and script (produced as a slide deck), and this report, based on the finished code and the assessment's stated rubric; all three were reviewed and edited afterwards. It was also used to generate a self-contained HTML/CSS mock-up of the full app flow (splash through settings) as a planning aid early in the project. That HTML mock-up was AI-generated; the final mock-up images embedded in this report and in the README are, by contrast, the original reference screenshots supplied at the start of the project, not AI-generated images — this distinction is stated here for clarity and academic honesty.
+4.4 Citation
+
+Claude was used as a supplementary debugging tool during the development of the project. It assisted with identifying possible causes of certain coding errors and suggesting fixes for bugs encountered during development. The final implementation, testing, and integration of the suggested fixes were completed by the developer.
+
+Claude is referenced in this report using Harvard referencing, with an in-text citation of (Anthropic, 2026) where its assistance is mentioned. A full reference is provided in the References section (Section 6), including the tool name, publisher, version where applicable, and access date. The use of generative AI was limited to debugging assistance and did not replace the developer’s own coding, testing, or decision-making.
+
+A record of the prompts and responses used for debugging can be retained as chat history and included as an appendix if required by the module guidelines.
 
 
 5. Conclusion
